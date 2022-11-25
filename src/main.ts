@@ -1,5 +1,22 @@
 import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { VueFire, VueFireAuth } from 'vuefire'
 
-createApp(App).mount('#app')
+import App from '@/App.vue'
+import router from '@/router'
+
+import '@/assets/css/main.css'
+import vuetify from '@/plugins/vuetify'
+import { firebaseApp } from '@/plugins/firebase'
+
+const app = createApp(App)
+
+app.use(router)
+app.use(vuetify)
+app
+  .use(VueFire, {
+    firebaseApp,
+    modules: [
+      VueFireAuth(),
+    ],
+  })
+app.mount('#app')
