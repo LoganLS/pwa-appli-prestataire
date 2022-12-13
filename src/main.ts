@@ -8,6 +8,11 @@ import '@/assets/css/main.css'
 import vuetify from '@/plugins/vuetify'
 import { firebaseApp } from '@/plugins/firebase'
 
+/*
+import "leaflet/dist/leaflet.css"
+import "/Tween.js"
+import "/leaflet.curve.js"*/
+
 const app = createApp(App)
 
 app.use(router)

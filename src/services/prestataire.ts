@@ -6,6 +6,8 @@ const COLLECTION = 'prestataires'
 
 export interface Prestataire {
     uid: string,
+    firstName: string,
+    lastName: string,
     speciality: string,
 }
 

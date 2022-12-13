@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '@/plugins/firebase'
 import router from '@/router'
@@ -7,6 +7,8 @@ import { createPrestataire } from '@/services/prestataire'
 
 const email = ref<string>('')
 const password = ref<string>('')
+const firstName = ref<string>('')
+const lastName = ref<string>('')
 const speciality = ref<string>('')
 
 const specialities = [
@@ -30,6 +32,8 @@ async function submit() {
         const response = await createUserWithEmailAndPassword(auth, email.value, password.value);
         createPrestataire({
             uid: response.user.uid,
+            firstName: firstName.value,
+            lastName: lastName.value,
             speciality: speciality.value,
         })
         errorAuthentication.value = false
@@ -55,6 +59,12 @@ async function submit() {
                 </VRow>
                 <VRow justify="center">
                     <VTextField v-model="password" label="Mot de passe" type="password" />
+                </VRow>
+                <VRow justify="center">
+                    <VTextField v-model="firstName" label="Prénom" />
+                </VRow>
+                <VRow justify="center">
+                    <VTextField v-model="lastName" label="Nom" />
                 </VRow>
                 <VRow justify="center">
                     <VSelect v-model="speciality" :items="specialities" label="Specialite" />
