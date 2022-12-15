@@ -15,6 +15,14 @@ const router = createRouter({
             },
         },
         {
+            path: '/map',
+            name: 'Map',
+            component: () => import('@/views/Map.vue'),
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
             path: '/connexion',
             name: 'Login',
             component: () => import('@/views/auth/Login.vue'),

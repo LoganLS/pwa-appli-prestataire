@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import HeaderNav from '@/components/HeaderNav.vue'
-import Calendar from '@/components/Calendar.vue'
+import Map from '@/components/Map.vue'
 </script>
 
 <template>
@@ -9,7 +9,8 @@ import Calendar from '@/components/Calendar.vue'
         <section>
             <!--<Map />-->
             <HeaderNav />
-            <Calendar />
+            <Map />
         </section>
     </section>
 </template>
+
