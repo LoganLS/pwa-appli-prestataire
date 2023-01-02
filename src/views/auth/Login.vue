@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '@/plugins/firebase'
 import router from '@/router'
+import { createToken } from '@/services/prestataire'
 
 const email = ref<string>('')
 const password = ref<string>('')
@@ -13,7 +14,11 @@ const errorMessage = ref<string>('')
 
 async function submit() {
     try {
-        await signInWithEmailAndPassword(auth, email.value, password.value);
+        const prestaire = await signInWithEmailAndPassword(auth, email.value, password.value)
+        await createToken({
+            prestaire_uid: prestaire.user.uid,
+            token: prestaire.user.accessToken as string,
+        })
         errorAuthentication.value = false
         router.push('/')
     } catch (err: any) {

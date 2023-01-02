@@ -7,7 +7,6 @@ import Map from '@/components/Map.vue'
     <section>
         <HeadNav />
         <section>
-            <!--<Map />-->
             <HeaderNav />
             <Map />
         </section>

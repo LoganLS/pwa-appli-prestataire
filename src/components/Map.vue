@@ -6,12 +6,11 @@ import {onMounted, ref} from 'vue'
 import { RDV } from "@/services/rdv";
 
 const rdvs = ref<Array<RDV>>([])
-  const lat = 45.764043
-  const lon = 4.835659
-  let map = null
+const lat = 45.764043
+const lon = 4.835659
+let map = null
 
 onMounted(async() => {
-  console.log(L)
   map = L.map('map').setView([lat, lon], 11)
   L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png').addTo(map)
 })
